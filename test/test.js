@@ -1,15 +1,17 @@
-var assert = require('chai').assert,
-	foo = 'bar',
-	beverages = {
-		tea: ['chai', 'matcha', 'oolong']
-	};
-it('foo', () => {
-	assert.typeOf(foo, 'string'); // without optional message
-	assert.typeOf(foo, 'string', 'foo is a string'); // with optional message
-	assert.equal(foo, 'bar', 'foo equal `bar`');
-	assert.lengthOf(foo, 3, 'foo`s valsue has a length of 3');
+/*  This program is an Express server to generate memes using ImageMagick <https://imagemagick.org>
+    Copyright (C) <year>  <name of author>
 
-})
-it('tea', () => {
-	assert.lengthOf(beverages.tea, 3, 'beverages has 3 types of tea');
-})
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>. 
+ */
+it('Test that server is working', () => {});
