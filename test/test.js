@@ -14,4 +14,33 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>. 
  */
-it('Test that server is working', () => {});
+
+const express = require('express')
+const app = express()
+const port = 3000
+const path = require("path")
+const chai = require("chai").assert
+const request = require("request")
+it('Test that express is working', (done) => {
+	app.get("*", (req, res) => {
+		res.status(404).send("achoo")
+	})
+	app.listen(port, () => {
+		console.log("done")
+		request("http://localhost:" + port + "/", (err, res, body) => {
+			if (err) done(err)
+			else if (res.statusCode === 404) {
+				done(new Error("Status code 404"));
+			} else {
+				console.log(body)
+				done()
+			}
+
+		})
+
+	})
+
+});
+it('always will pass', (done) => {
+	done()
+})
