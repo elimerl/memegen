@@ -1,6 +1,3 @@
-const {
-	spawnSync
-} = require('child_process')
 /*  This program is an Express server to generate memes using ImageMagick <https://imagemagick.org>
     Copyright (C) <year>  <name of author>
 
@@ -53,9 +50,9 @@ it('Generate test meme', (done) => {
 		'-gravity', 'NorthWest',
 		'-font', 'fonts/AlfaSlabOne-Regular.ttf',
 		'-pointsize', '70',
-		'-annotate', '+70+100', 'Test Text',
-		'-annotate', '+70+700', 'Test Text',
-		'-annotate', '+70+1400', 'Test Text',
+		'-annotate', '+70+100', '',
+		'-annotate', '+70+700', '',
+		'-annotate', '+70+1400', '',
 		'test/test.png'
 	])
 	const convert = im.compare(['-metric', 'PHASH', 'test/panic.png', 'test/test.png', 'null:'])
