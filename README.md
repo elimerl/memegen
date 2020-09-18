@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/elimerl/memegen.svg?branch=master)](https://travis-ci.org/elimerl/memegen)
+[![Build Status](https://travis-ci.org/elimerl/memegen.svg?branch=development)](https://travis-ci.org/elimerl/memegen)
 # Memegen
 Basic tool to generate memes and do basic image manipulation in [Node.js](https://nodejs.org)  
 This is the development branch. It has more features than master, but is buggier.  
