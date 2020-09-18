@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/elimerl/memegen.svg?branch=master)](https://travis-ci.org/elimerl/memegen)
 # Memegen
 Basic tool to generate memes and do basic image manipulation in [Node.js](https://nodejs.org)
 
@@ -14,4 +15,3 @@ cd memegen
 npm start
 ```
 And go to (by default) http://localhost:3000
-test
