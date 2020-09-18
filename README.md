@@ -2,3 +2,15 @@
 Basic tool to generate memes and do basic image manipulation in [Node.js](https://nodejs.org)
 
 This project is under the GPL v3 License. View the license [here](https://www.gnu.org/licenses/gpl-3.0.txt).
+
+# Usage
+Clone the repository:
+```
+git clone https://github.com/elimerl/memegen.git
+```
+Then cd into the directory and `npm start`
+```
+cd memegen
+npm start
+```
+And go to (by default) http://localhost:3000

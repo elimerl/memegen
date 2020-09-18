@@ -14,40 +14,48 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>. 
  */
-const im = require("./lib/im")
+const im = require('./lib/im')
 
 const express = require('express')
-const rateLimit = require("express-rate-limit");
-const short = require("short-uuid")
+const rateLimit = require('express-rate-limit');
+const short = require('short-uuid')
 const app = express()
 const port = 3000
-const path = require("path")
-app.use(express.static(path.join(__dirname, "site")))
-app.use(express.static(path.join(__dirname, "memes")))
+const path = require('path')
+app.use(express.static(path.join(__dirname, 'site')))
+app.use(express.static(path.join(__dirname, 'memes')))
 
 const limiter = rateLimit({
 	windowMs: 15 * 1000, // 15 seconds
 	max: 10 // limit each IP to 10 requests per windowMs
 });
-const verbose = (process.argv[2] === "--verbose")
+const verbose = (process.argv[2] === '--verbose')
 //  apply to all requests
 app.use(limiter);
 app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname, "site", "index.htm"))
+	res.sendFile(path.join(__dirname, 'site', 'index.htm'))
 })
 app.get('/panik', (req, res) => {
 	const text = [req.query.text0, req.query.text1, req.query.text2]
 	const imgUUID = short.generate()
-	if (verbose) console.log("Request ID " + imgUUID + " has been sent. Processing...")
+	if (verbose) console.log('Request ID ' + imgUUID + ' has been sent. Processing...')
 	panic(text, imgUUID)
-	if (verbose) console.log("Request ID " + imgUUID + " has been processed. Redirecting...")
+	if (verbose) console.log('Request ID ' + imgUUID + ' has been processed. Redirecting...')
+	res.redirect('../file/' + imgUUID)
+})
+app.get('/drake', (req, res) => {
+	const text = [req.query.text0, req.query.text1]
+	const imgUUID = short.generate()
+	if (verbose) console.log('Request ID ' + imgUUID + ' has been sent. Processing...')
+	drake(text, imgUUID)
+	if (verbose) console.log('Request ID ' + imgUUID + ' has been processed. Redirecting...')
 	res.redirect('../file/' + imgUUID)
 })
 app.get('/file/:id', (req, res) => {
 	const fileID = req.params.id
-	if (verbose) console.log("Request ID " + fileID + " has been requested. Finishing...")
-	res.sendFile(path.join(__dirname, "out", fileID + ".png"))
-	if (verbose) console.log("Request ID " + fileID + " has been finished.")
+	if (verbose) console.log('Request ID ' + fileID + ' has been requested. Finishing...')
+	res.sendFile(path.join(__dirname, 'out', fileID + '.png'))
+	if (verbose) console.log('Request ID ' + fileID + ' has been finished.')
 })
 app.listen(port, () => {
 	console.log(`Memegen listening at http://localhost:${port}`)
@@ -59,25 +67,25 @@ app.listen(port, () => {
  * @returns {string} Relative path to where the output is stored.
  */
 function panic(text, imgUUID) {
-	im.convert(["memes/panic.png",
-		"-gravity", "NorthWest",
-		"-font", "fonts/ComicSansMS.ttf",
-		"-pointsize", "70",
-		"-annotate", "+70+100", text[0],
-		"-annotate", "+70+700", text[1],
-		"-annotate", "+70+1400", text[2],
+	im.convert(['memes/panic.png',
+		'-gravity', 'NorthWest',
+		'-font', 'fonts/AlfaSlabOne-Regular.ttf',
+		'-pointsize', '70',
+		'-annotate', '+70+100', text[0],
+		'-annotate', '+70+700', text[1],
+		'-annotate', '+70+1400', text[2],
 		`out/${imgUUID}.png`
 	])
 	return `out/${imgUUID}.png`
 }
 
 function drake(text, imgUUID) {
-	im.convert(["memes/panic.png",
-		"-gravity", "NorthWest",
-		"-font", "fonts/ComicSansMS.ttf",
-		"-pointsize", "70",
-		"-annotate", "+70+100", text[0],
-		"-annotate", "+70+700", text[1],
+	im.convert(['memes/drake.png',
+		'-gravity', 'NorthEast',
+		'-font', 'fonts/ComicSansMS.ttf',
+		'-pointsize', '40',
+		'-annotate', '+10+100', text[0],
+		'-annotate', '+10+450', text[1],
 		`out/${imgUUID}.png`
 	])
 	return `out/${imgUUID}.png`

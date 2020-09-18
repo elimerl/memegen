@@ -4,7 +4,8 @@
   "description": "Meme generator.",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js --verbose",
+    "test": "mocha --exit --timeout 5000"
   },
   "repository": {
     "type": "git",

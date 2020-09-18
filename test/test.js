@@ -1,3 +1,6 @@
+const {
+	spawnSync
+} = require('child_process')
 /*  This program is an Express server to generate memes using ImageMagick <https://imagemagick.org>
     Copyright (C) <year>  <name of author>
 
@@ -18,21 +21,24 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const path = require("path")
-const chai = require("chai").assert
-const request = require("request")
+const path = require('path')
+const chai = require('chai').assert
+const request = require('request')
+const os = require('os');
+const im = require('../lib/im')
+const fs = require('fs')
 it('Test that express is working', (done) => {
-	app.get("*", (req, res) => {
-		res.status(404).send("achoo")
+	app.get('*', (req, res) => {
+		res.json({
+			working: 'This response means the server is working.'
+		})
 	})
 	app.listen(port, () => {
-		console.log("done")
-		request("http://localhost:" + port + "/", (err, res, body) => {
+		request('http://localhost:' + port + '/', (err, res, body) => {
 			if (err) done(err)
-			else if (res.statusCode === 404) {
-				done(new Error("Status code 404"));
+			else if (JSON.parse(body).working !== 'This response means the server is working.') {
+				done(new Error('Bad response'));
 			} else {
-				console.log(body)
 				done()
 			}
 
@@ -41,6 +47,18 @@ it('Test that express is working', (done) => {
 	})
 
 });
-it('always will pass', (done) => {
+
+it('Generate test meme', (done) => {
+	im.convert(['memes/panic.png',
+		'-gravity', 'NorthWest',
+		'-font', 'fonts/AlfaSlabOne-Regular.ttf',
+		'-pointsize', '70',
+		'-annotate', '+70+100', 'Test Text',
+		'-annotate', '+70+700', 'Test Text',
+		'-annotate', '+70+1400', 'Test Text',
+		'test/test.png'
+	])
+	const convert = im.compare(['-metric', 'PHASH', 'test/panic.png', 'test/test.png', 'null:'])
+	chai.strictEqual(convert.stderr.toString('utf-8'), '0')
 	done()
 })
