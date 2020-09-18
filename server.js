@@ -14,7 +14,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>. 
  */
-const im = require('./lib/im')
+const im = require('./lib/im7')
 
 const express = require('express')
 const rateLimit = require('express-rate-limit');
