@@ -46,6 +46,7 @@ it('Test that express is working', (done) => {
 });
 
 it('Generate test meme', (done) => {
+	im.compare(["-version"])
 	im.convert(['memes/panic.png',
 		'-gravity', 'NorthWest',
 		'-font', 'fonts/AlfaSlabOne-Regular.ttf',
