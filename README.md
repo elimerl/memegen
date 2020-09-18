@@ -9,9 +9,12 @@ Clone the repository:
 ```
 git clone https://github.com/elimerl/memegen.git
 ```
-Then cd into the directory and `npm start`
+Then cd into the directory and `npm install` and `npm start`
 ```
 cd memegen
+npm install
 npm start
 ```
-And go to (by default) http://localhost:3000
+And go to (by default) http://localhost:3000 to see the meme generator.
+To Do:
+[ ] Add more memes
