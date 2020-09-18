@@ -2,6 +2,6 @@ language: node_js
 before_install:
   - sudo apt update
   - sudo apt -y install imagemagick
-  - magick -version
+  - sudo apt list
 node_js:
   - 14
