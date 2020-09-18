@@ -17,4 +17,4 @@ npm start
 ```
 And go to (by default) http://localhost:3000 to see the meme generator.
 To Do:
-[ ] Add more memes
+- [ ] Add more memes
