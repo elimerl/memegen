@@ -17,7 +17,7 @@
     "generator",
     "meme"
   ],
-  "author": "Eli Davies",
+  "author": "elimerl",
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "express": "^4.17.1",

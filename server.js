@@ -1,5 +1,5 @@
 /*  This program is an Express server to generate memes using ImageMagick <https://imagemagick.org>
-    Copyright (C) <year>  <name of author>
+    Copyright (C) 2020 elimerl
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
