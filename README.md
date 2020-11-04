@@ -5,11 +5,11 @@ This project is under the GPL v3 License. View the license [here](https://www.gn
 
 # Usage
 Clone the repository:
-```
+```sh
 git clone https://github.com/elimerl/memegen.git
 ```
 Then cd into the directory and `npm install` and `npm start`
-```
+```sh
 cd memegen
 npm install
 npm start
